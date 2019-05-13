@@ -6,8 +6,10 @@ class Product {
     public $productName;
     public $price;
 
-	public function getPrice() {
-		return $this->price;
+	public function setPrice($discount = 0) {
+		if ($discount > 0) {
+			return "<del>{$this->price}</del> {$discount}";
+		} 
 	}
 	
 	public function __construct($id, $productName, $price) {
@@ -20,7 +22,7 @@ class Product {
 		echo "<div class='item'>";
 			echo "<a href='#' class='product-link'><img src='img/product/img_{$this->id}.jpg' alt='{$this->productName}' class='item-img'>";
 				echo "<div class='item-text-block'>";
-					echo "<p class='item-name'>{$this->productName}</p> <p class='item-price pink'>{$this->getPrice()}$</p>";
+					echo "<p class='item-name'>{$this->productName}</p> <p class='item-price pink'>{$this->setPrice()}$</p>";
 				echo "</div>";
 			echo "</a>";
 			echo "<div class='add_cart'><div class='add'>Add to Cart</div></div>";
@@ -29,7 +31,8 @@ class Product {
 }
 
 class ProductDiscount extends Product {
-    protected $discount;
+	
+    public $discount;
 
     public function __construct($id, $productName, $price, $discount) {
         parent::__construct($id, $productName, $price);
@@ -38,14 +41,8 @@ class ProductDiscount extends Product {
 
     public function render() {
         parent::render();
-        $this->displayDiscount();
-		$this->getPrice();
+		$this->setPrice($discount);
     }
-
-    public function displayDiscount() {
-        echo "<p>{$this->discount}</p>";
-    }
-
 }
 
 $product1 = new Product(1, "Mango футболка", 52);
