@@ -9,7 +9,9 @@ class Product {
 	public function setPrice($discount = 0) {
 		if ($discount > 0) {
 			return "<del>{$this->price}</del> {$discount}";
-		} 
+		} else {
+			return $this->price;
+		}
 	}
 	
 	public function __construct($id, $productName, $price) {
@@ -39,7 +41,7 @@ class ProductDiscount extends Product {
         $this->discount = $discount;
     }
 
-    public function render() {
+    public function render($discount) {
         parent::render();
 		$this->setPrice($discount);
     }
