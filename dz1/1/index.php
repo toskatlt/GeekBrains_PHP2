@@ -6,12 +6,8 @@ class Product {
     public $productName;
     public $price;
 
-	public function setPrice($discount = 0) {
-		if ($discount > 0) {
-			return "<del>{$this->price}</del> {$discount}";
-		} else {
+	public function setPrice() {
 			return $this->price;
-		}
 	}
 	
 	public function __construct($id, $productName, $price) {
@@ -33,17 +29,20 @@ class Product {
 }
 
 class ProductDiscount extends Product {
-	
     public $discount;
 
     public function __construct($id, $productName, $price, $discount) {
         parent::__construct($id, $productName, $price);
         $this->discount = $discount;
     }
+	
+	public function setPrice() {
+		return "<del style='color:black;'>{$this->price}</del> {$this->discount}";
+	}
 
-    public function render($discount) {
+    public function render() {
         parent::render();
-		$this->setPrice($discount);
+		$this->setPrice();
     }
 }
 
@@ -54,7 +53,7 @@ $product4 = new Product(4, "Mango платье", 34);
 $product5 = new Product(5, "ТВОЕ штаны", 24);
 $product6 = new Product(6, "ADIDAS костюм", 40);
 $product7 = new Product(7, "Reebok штаны", 33);
-$product8 = new ProductDiscount(8, "ZARA толстовка", 38, 15);
+$product8 = new ProductDiscount(8, "ZARA толстовка", 38, 28);
 
 ?>
 
