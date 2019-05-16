@@ -14,6 +14,6 @@ abstract class Products {
 	}
 	
 	abstract public function getCost();
-	//abstract public function getProfit();
-	//abstract public function getSaleInfo();
+	abstract public function getProfit();
+	abstract public function getSaleInfo();
 }
