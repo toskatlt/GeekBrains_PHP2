@@ -13,7 +13,7 @@ abstract class Products {
 		$this->price = $price;
 	}
 	
-	abstract public function getCost();
-	abstract public function getProfit();
-	abstract public function getSaleInfo();
+	abstract protected function getCost();
+	abstract protected function getProfit();
+	abstract protected function getSaleInfo();
 }
