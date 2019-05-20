@@ -24,8 +24,28 @@ abstract class Model implements IModel {
         return $this->db->queryAll($sql);
     }
 
-    public function insert($data) {
-		var_dump($data);
+    public function insert() {
+		$fields = '';
+		$values = '';
+		$exceptions = ['db'];
+		$data = get_object_vars($this);
+        foreach ($data as $column => $value) {
+			if (!in_array($column, $exceptions)) {
+            	$fields .= "`{$column}`,";
+			}
+        }
+        $fields = substr($fields, 0, strlen($fields) - 1);
+		
+		foreach ($data as $column => $value) {
+			if (!in_array($column, $exceptions)) {
+            	$values .= "'{$value}',";
+			}
+        }
+		$values = substr($values, 0, strlen($values) - 1);
+		
+        $tableName = $this->getTableName();
+		$sql = "INSERT INTO {$tableName} ({$fields}) VALUES ({$values})";
+        return $this->db->execute($sql);
     }
 
     public function delete() {

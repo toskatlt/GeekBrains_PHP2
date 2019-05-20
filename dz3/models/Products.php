@@ -17,10 +17,6 @@ class Products extends Model {
         $this->id_categories = $id_categories;
     }
 	
-	public function insert() {
-		
-    }
-	
     public function getTableName() {
         return 'products';
     }

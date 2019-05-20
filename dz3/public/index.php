@@ -9,9 +9,9 @@ use app\engine\Autoload;
 spl_autoload_register([new Autoload(), 'loadClass']);
 
 $product = new Products("ADIDAS кроссовки", 35, 65, 6);
-$product->insert();
+echo $product->insert();
 
 //$product->delete();
 
-var_dump($product->getOne(2));
-var_dump($product->getOne(5));
+//var_dump($product->getOne(2));
+//var_dump($product->getAll());
