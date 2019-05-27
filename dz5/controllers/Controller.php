@@ -10,12 +10,9 @@ abstract class Controller implements IRenderer {
     protected $useLayout = true;
     private $renderer;
 
-
-    public function __construct(IRenderer $renderer)
-    {
+    public function __construct(IRenderer $renderer) {
         $this->renderer = $renderer;
     }
-
 
     public function runAction($action = null) {
         $this->action = $action ?: 'index';
@@ -29,7 +26,6 @@ abstract class Controller implements IRenderer {
         }
 
     }
-
 
     public function render($template, $params = []) {
         if ($this->useLayout) {

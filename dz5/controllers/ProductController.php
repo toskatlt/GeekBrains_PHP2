@@ -4,12 +4,9 @@ namespace app\controllers;
 
 use app\models\Products;
 
-class ProductController extends Controller
-{
-
-
-    public function actionCatalog()
-    {
+class ProductController extends Controller {
+	
+    public function actionCatalog() {
         $page = (int)$_GET['page'] ?? 0;
         $page++;
         $limit = $page * 2;
@@ -20,13 +17,11 @@ class ProductController extends Controller
         ]);
     }
 
-    public function actionIndex()
-    {
+    public function actionIndex() {
         echo $this->render("index");
     }
 
-    public function actionCard()
-    {
+    public function actionCard() {
         $id = $_GET['id'];
         $product = Products::getOne($id);
         echo $this->render("card", [

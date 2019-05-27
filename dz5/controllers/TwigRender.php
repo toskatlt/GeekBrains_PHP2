@@ -16,7 +16,7 @@ class TwigRender implements IRenderer {
     public function renderTemplate($template, $params = []) {
         extract($params);
         $template = "{$template}.tmpl";
-		$templatePath = $this->templater->loadTemplate($template);
-        return $template->renderTemplate($params);
+		$template = $this->templater->loadTemplate($template);
+        return $template->render($params);
     }
 }

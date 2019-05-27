@@ -7,7 +7,7 @@ include "../vendor/autoload.php";
 
 use app\engine\Autoload;
 use app\models\Users;
-use app\controllers\Render;
+use app\controllers\TwigRender;
 
 spl_autoload_register([new Autoload(), 'loadClass']);
 
@@ -19,11 +19,11 @@ $controllerClass = "app\\controllers\\" . ucfirst($controllerName) . "Controller
 //echo "{$controllerName} - controllerName <br>";
 //echo "{$actionName} - actionName <br>";
 
+//echo "{$controllerClass} - controllerClass <br>";
+
 if (class_exists($controllerClass)) {
-    $controller = new $controllerClass(new Render());
+    $controller = new $controllerClass(new TwigRender());
     $controller->runAction($actionName);
 }
-
-echo $twig->render('index.tmpl', []);
 
 
