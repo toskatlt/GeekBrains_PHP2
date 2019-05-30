@@ -22,12 +22,9 @@ echo $actionName.' actionName<br>';
 
 $controllerClass = "app\\controllers\\" . ucfirst($controllerName) . "Controller";
 
-echo $controllerClass.'<br>';
-
 if (class_exists($controllerClass)) {
     $controller = new $controllerClass(new Render());
     $controller->runAction($actionName);
-	echo $controller->runAction($actionName).'<br>';
 }
 
 /** @var Products $product */

@@ -17,7 +17,6 @@ abstract class Controller implements IRenderer {
     public function runAction($action = null) {
         $this->action = $action ?: 'index';
         $method = "action" . ucfirst($this->action);
-		echo $method.' method<br>';
         if (method_exists($this, $method)) {
             $this->$method();
 			echo $this->$method().' this->$method<br>';

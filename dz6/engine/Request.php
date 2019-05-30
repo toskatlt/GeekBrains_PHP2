@@ -13,16 +13,15 @@ class Request {
 
     public function __construct() {
         $this->requestString = $_SERVER['REQUEST_URI'];
-		echo $_SERVER['REQUEST_URI'].' - SERVER[REQUEST_URI]<br>';
         $this->parseRequest();
     }
 
 
     private function parseRequest() {
         $this->method = $_SERVER['REQUEST_METHOD'];
-        $url = explode('/php2/dz6/public/', $this->requestString);
-        $this->controllerName = $url[1];
-        $this->actionName = $url[2];
+        $url = explode('/', $this->requestString);
+        $this->controllerName = $url[4];
+        $this->actionName = $url[5];
         $this->params = $_REQUEST;
     }
 
