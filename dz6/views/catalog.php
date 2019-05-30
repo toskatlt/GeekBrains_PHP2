@@ -29,7 +29,6 @@ var_dump($products);
                 success: function(answer){
                     {window.location.reload()}
                 }
-
             })
         });
 

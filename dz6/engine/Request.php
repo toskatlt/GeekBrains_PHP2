@@ -16,7 +16,6 @@ class Request {
         $this->parseRequest();
     }
 
-
     private function parseRequest() {
         $this->method = $_SERVER['REQUEST_METHOD'];
         $url = explode('/', $this->requestString);

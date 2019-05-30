@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\interfaces\IRenderer;
+use app\models\Basket;
+use app\models\Users;
 
 abstract class Controller implements IRenderer {
     protected $action;
@@ -19,7 +21,6 @@ abstract class Controller implements IRenderer {
         $method = "action" . ucfirst($this->action);
         if (method_exists($this, $method)) {
             $this->$method();
-			echo $this->$method().' this->$method<br>';
         }
         else {
             echo "404";
@@ -29,7 +30,10 @@ abstract class Controller implements IRenderer {
     public function render($template, $params = []) {
         if ($this->useLayout) {
             return $this->renderTemplate("layouts/{$this->layout}",[
-                'content' => $this->renderTemplate($template, $params)
+                'content' => $this->renderTemplate($template, $params),
+                'count' => Basket::getCountWhere('session_id', session_id()),
+                'auth' => Users::isAuth(),
+                'username' => Users::getName()
             ]);
         } else {
             return $this->renderTemplate($template, $params);
