@@ -18,10 +18,9 @@
         <input type="text" name="pass" placeholder="Пароль">
         <input type="submit" name="submit" value="Войти">
     </form>
-<?php endif ;?>
+<?php endif; ?>
 
 <br>
-
 
 <br>
 <?=$content?>

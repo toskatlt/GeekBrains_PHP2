@@ -10,7 +10,6 @@ class Request {
     private $method;
     private $params;
 
-
     public function __construct() {
         $this->requestString = $_SERVER['REQUEST_URI'];
         $this->parseRequest();

@@ -1,14 +1,18 @@
 Каталог: <br>
 
+<?php 
+
 var_dump($products);
 
-<?php foreach ($products as $product): ?>
-<h2><a href="product/card/?id=<?=$product['id']?>"> <?=$product['name']?></a></h2>
+foreach ($products as $product): ?>
+
+<h2><a href="product/card/?id=<?=$product['id']?>"> <?=$product['product_name']?></a></h2>
 <p>Цена: <?=$product['price']?></p>
 
 <button id="<?=$product['id']?>" class="action">Купить</button>
 
 <?php endforeach; ?>
+
 <br>
 <a href="product/catalog/?page=<?=$page?>">Еще</a>
 

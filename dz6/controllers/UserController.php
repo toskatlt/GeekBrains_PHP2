@@ -2,13 +2,10 @@
 
 namespace app\controllers;
 
-
 use app\models\Users;
 
-class UserController extends Controller
-{
-    public function actionIndex()
-    {
+class UserController extends Controller {
+    public function actionIndex() {
         $users = Users::getAll();
         echo $this->render("users", [
             'users' => $users
@@ -21,8 +18,7 @@ class UserController extends Controller
         exit();
     }
 
-    public function actionLogin()
-    {
+    public function actionLogin() {
         //Авторизуем пользователя
         //Переделать на Request !!!!
         if (isset($_POST['submit'])) {

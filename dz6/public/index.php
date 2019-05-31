@@ -17,9 +17,6 @@ $request = new Request();
 $controllerName = $request->getControllerName() ?: 'product';
 $actionName = $request->getActionName();
 
-echo $controllerName.' controllerName<br>';
-echo $actionName.' actionName<br>';
-
 $controllerClass = "app\\controllers\\" . ucfirst($controllerName) . "Controller";
 
 if (class_exists($controllerClass)) {

@@ -26,12 +26,11 @@ class Db {
                 );
         }
         $this->connection->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
-        $this->connection->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
+       // $this->connection->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
         return $this->connection;
     }
 
     private function prepareDsnString() {
-
         return sprintf("%s:host=%s;dbname=%s;charset=%s",
             $this->config['driver'],
             $this->config['host'],
@@ -57,7 +56,6 @@ class Db {
         return true;
     }
 
-
     public function queryOne($sql, $params) {
         return $this->queryAll($sql, $params)[0];
     }
@@ -65,8 +63,7 @@ class Db {
     public function queryAll($sql, $params = []) {
         return $this->query($sql, $params)->fetchAll();
     }
-    public function __toString()
-    {
+    public function __toString() {
         return "Db";
     }
 
